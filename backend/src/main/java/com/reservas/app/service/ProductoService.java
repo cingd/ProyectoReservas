@@ -1,10 +1,11 @@
-package com.reservas.app.service;
+package service;
 
-import com.reservas.app.model.Producto;
-import com.reservas.app.repository.ProductoRepository;
+import model.Producto;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -32,5 +33,8 @@ public class ProductoService {
 
     public void eliminarProducto(Long id) {
         productoRepository.deleteById(id);
+    }
+
+    public Slice<Object> listarProductosPagina(Pageable pageable) {
     }
 }

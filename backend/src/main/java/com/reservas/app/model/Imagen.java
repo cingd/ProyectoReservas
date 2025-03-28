@@ -1,7 +1,8 @@
-package com.reservas.app.model;
+package model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import model.Producto;
 
 @Entity
 @Table(name = "imagenes")

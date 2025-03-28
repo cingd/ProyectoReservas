@@ -1,22 +1,33 @@
-package com.reservas.app.model;
+package model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "productos")
 @Data
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String nombre;
-
     private String descripcion;
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    private List<Imagen> imagenes;
+    private List<ImagenProducto> imagenes;
+}
+
+@Entity
+@Data
+class ImagenProducto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String url;
+
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private Producto producto;
 }
