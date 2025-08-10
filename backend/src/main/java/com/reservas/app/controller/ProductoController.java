@@ -48,7 +48,7 @@ public class ProductoController {
             @RequestParam(defaultValue = "10") int tamaño) {
 
         Pageable pageable = PageRequest.of(pagina, tamaño);
-        return ResponseEntity.ok(productoService.listarProductosPagina(pageable).map(producto -> (Producto) producto));
+        return ResponseEntity.ok(productoService.listarProductosPagina(pageable));
     }
 
     // Endpoint ADMIN para eliminar
