@@ -1,11 +1,13 @@
 package service;
 
 import model.Producto;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import repository.ProductoRepository;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class ProductoService {
         productoRepository.deleteById(id);
     }
 
-    public Slice<Object> listarProductosPagina(Pageable pageable) {
+    public Page<Producto> listarProductosPagina(Pageable pageable) {
+        return productoRepository.findAll(pageable);
     }
 }
